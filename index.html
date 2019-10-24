@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Document</title>
+  <style>
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <main>
+    <ul class="ul">
+      <li>
+          <input type="text">
+          <button type="button" class="add" > + </button>
+          <button type="button" class="delete"> - </button>
+      </li>
+    </ul>
+  </main>
+
+  
+  <script>
+
+    let addBtn = document.querySelector('.add');
+
+    addBtn.addEventListener('click', () => {
+      click(event);
+    });
+
+    function click(event) {
+      if (!(hasUl(event))) {
+        let ul = document.createElement('ul');
+        ul.classList.add('ul');
+        let li = document.createElement('li');
+        let btn = document.createElement('button');
+        btn.innerText = '+';
+        btn.addEventListener('click', () => {click(event)});
+        li.append(btn);
+        ul.append(li);
+
+        event.target.parentElement.append(ul);
+      } else {
+        let li = document.createElement('li');
+        let btn = document.createElement('button');
+        btn.innerText = '+';
+        btn.addEventListener('click', () => {click(event)});
+        li.append(btn);
+
+        event.target.parentElement.lastElementChild.append(li);
+
+        console.log('hello')
+
+      }
+    }
+
+    function hasUl(event) {
+      return event.target.parentElement.lastElementChild.classList.contains('ul')
+
+    }
+
+  </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+</html>
